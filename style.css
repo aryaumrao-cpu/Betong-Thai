@@ -5,6 +5,18 @@
     font-family: Arial, Helvetica, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+
+
+
 body {
     background-color: #fff6e5;
     color: #1c1c1c;

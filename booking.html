@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style 1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Betong Thai</title>
+</head>
+<body>
+    <div class = "utility-bar">
+        <div class ="utility-left">
+            <a href = "menu.html" class="utility-btn">Order Now</a>
+            <a href ="booking.html" class="utility-btn"> Book a Table</a>
+        </div>
+
+        <div class = "utility-right">
+            <a href ="login.html"><img src = "Brown Cart Online Shop Icon Modern Logo (1).png" alt = "login-icon" class = "login-icon"> Login</a>
+            <span class = "divider">|</span>
+            <a href = "signup.html">Sign Up</a>
+        </div>
+    </div>
+    <div class = "topnav">
+        <img src = "Betong Thai Logo (1).png" class = "logo">
+                <a class = "active" href = "home 1.html">Home</a>
+                <a href = "menu.html">Menu</a>
+                <a href = "booking.html">Booking</a>
+                <a href = "contact.html">Contact</a>
+    <div class = "cart-icon" onclick = "toggleCart()">
+        <img src = "Brown Cart Online Shop Icon Modern Logo.png" alt = "Cart Icon">
+        <span class = "cart-count"> </span>
+            </div>
+ </div>
+
+ <div class = "cart-panel" id = "cartPanel">
+    <ul id = "cartItems">
+        <li> No items yet </li><!-- Cart items will be dynamically added here -->
+    </ul>
+</div>
+    
+</body>
+</html>

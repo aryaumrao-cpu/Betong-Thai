@@ -5,6 +5,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 .utility-bar {
     width: 100%;
     box-sizing: border-box;

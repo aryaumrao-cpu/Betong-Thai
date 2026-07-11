@@ -7,6 +7,18 @@ document.addEventListener("DOMContentLoaded", function() {
         pwInput.type = isHidden ? "text" : "password";
         pwToggle.setAttribute("aria-pressed", isHidden);
         pwToggle.classList.toggle("closed");
+
+        const svg = pwToggle.querySelector("svg")
+        if (isHidden) {
+            svg.innerHTML = `
+                <path d="M17.94 17.94L6.06 6.06M1 12s4-7 11-7c2.5 0 4.67.8 6.5 2M23 12s-4 7-11 7c-2.5 0-4.67-.8-6.5-2"/>
+            `;
+        } else {
+            svg.innerHTML = `
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+            `;
+        }
     });
 
         var confirmInput = document.getElementById("confirm");
@@ -17,6 +29,18 @@ document.addEventListener("DOMContentLoaded", function() {
             confirmInput.type = isHidden ? "text" : "password";
             confirmToggle.setAttribute("aria-pressed", isHidden);
             confirmToggle.classList.toggle("closed");
+
+            const svg = confirmToggle.querySelector("svg");
+            if (isHidden) {
+                svg.innerHTML = `
+                <path d="M17.94 17.94L6.06 6.06M1 12s4-7 11-7c2.5 0 4.67.8 6.5 2M23 12s-4 7-11 7c-2.5 0-4.67-.8-6.5-2"/>
+            `;
+            } else {
+                svg.innerHTML = `
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+            `;
+            }
         });
     
     document.querySelector(".btn-google").addEventListener("click", function() {

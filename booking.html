@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style 1.css">
+    <link rel="stylesheet" href="booking.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -48,5 +48,129 @@
     </div>
  </section>
 
+ <section class="booking-hero">
+    <h1> Make an online booking</h1>
+    <p>After our latest renovation we now seat over 120 guests, including a private function room for up to 30. The dining room is dressed with Thai art and handwoven textiles sourced directly from Betong — a genuine backdrop for your next Thai dinner or celebration.</p>
+ </section>
+
+ <section class="booking-card">
+    <div class="booking-brand">
+        <img src="Betong Thai Logo (1).png" class="booking-brand-logo" alt="Betong Thai Logo">
+        <p class="booking-brand-name"> Betong Thai - Modern Thai Kitchen</p>
+    </div>
+
+    <ol class="stepper" id="stepper">
+        <li class="stepper-step active" data-step="1"><span class="stepper-dot">1</span>Booking</li>
+        <li class="stepper-step" data-step="2"><span class="stepper-dot">2</span>Your Details</li>
+        <li class="stepper-step" data-step="3"><span class="stepper-dot">3</span>Summary</li>
+    </ol>
+
+    <div class="booking-step" id="step1">
+        <div class="booking-panels">
+            <div class="date-panel">
+                <div class="date-display" id="dateDisplay">
+                    <span class="date-display-year">Pick a date</span>
+                    <span class="date-display-day">—</span>
+                </div>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" id="prevMonth" aria-label="Previous month">&lsaquo;</button>
+                        <span class="calendar-month" id="calendarMonth"></span>
+                        <button class="calendar-nav" id="nextMonth" aria-label="Next month">&rsaquo;</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <span>Mon</span><span>Tues</span><span>Wed</span><span>Thurs</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+            </div>
+            <div class="guest-panel">
+                <h3>How many people are coming?</h3>
+                <label class="guest-label" for="guestCount">Booking for</label>
+                <div class="guest-counter">
+                    <div class="guest-count-box" id="guestCount">0</div>
+                    <button class="guest-btn" id="guestMinus" aria-label="Remove a guest">-</button>
+                    <button class="guest-btn guest-btn-add" id="guestPlus" aria-label="Add a guest">+</button>
+                </div>
+                <p class="guest-note">Parties larger than 12 - call the restaurantdirectly to arrangea function room.</p>
+            </div>
+        </div>
+        <div class="booking-actions">
+            <button class="booking-btn booking-btn-primary" id="toStep2" disabled>Continue</button>
+        </div>
+    </div>
+
+    <div class="booking-step" id="step2" hidden>
+        <div class="details-form">
+            <label>Full name 
+                <input type="text" id="guestName" placeholder="Your Name">
+            </label>
+            <label> Phone Number
+                <input type="tel" id="guestPhone" placeholder="04xx xxx xxx">
+            </label>
+            <label> Email
+                <input type="email" id="guestEmail" placeholder="you@example.com">
+            </label>
+            <label>Special requests <span class="optional">(optional)</span> <textarea id="guestNotes" rows="3" placeholder="Allergies, celebrations, seating preferences...."></textarea>
+            </label>
+        </div>
+        <div class="booking-actions">
+            <button class="booking-btn booking-btn-ghost" id="toStep1Back">Back</button>
+            <button class="booking-btn booking-btn-primary" id="toStep3" disabled>Review booking</button>
+        </div>
+    </div>
+
+    <div class="booking-step" id="step3" hidden>
+        <div class="summary-box" id="summaryBox"></div>
+        <div class="booking-actions">
+            <button class="booking-btn booking-btn-ghost" id="toStep2Back">Back</button>
+            <button class="booking-btn booking-btn-primary" id="confirmBooking">Confirm booking</button>
+        </div>
+    </div>
+
+    <div class="booking-step" id="stepDone" hidden>
+        <div class="confirm-box">
+            <div class="confirm-check">✓</div>
+            <h3>Booking confirmed</h3>
+            <p id="confirmText"></p>
+            <p class="confirm-note">A confirmation will be sent to the email you provided. See you Soon!</p>
+        </div>
+    </div>
+ </section>
+
+ <script src="booking.js"></script>
+
+ <footer class="site-footer">
+    <div class="footer-top"> 
+        <div class="footer-col">
+            <h3 class="footer-heading"> Opening Hours</h3>
+            <p class="footer-sub"> Mon - Fri </p>
+            <p class="footer-line"><strong>12pm - 9pm</strong></p>
+            <p class="footer-sub"> Saturday </p>
+            <p class="footer-line"><strong>4pm - 9pm</strong></p>
+            <p class="footer-sub"> Sunday </p>
+            <p class="footer-line"><strong>Closed</strong></p>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="footer-heading">Contact</h3>
+            <p class="footer-line">T. <a href="tel: +61296183300"> (02) 9618 3300</a></p>
+            <h3 class="footer-heading footer-heading-spaced"> Our Location </h3>
+            <p class="footer-line"> 71 Saywell Rd, Macquarie Fields NSW 2564</p>
+        </div>
+
+        <div class="footer-col footer-nav">
+            <a href="home 1.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p class="footer-copy"> © 2026 All Rights Reserved | Betong Thai</p>
+        <img src="Betong Thai Logo (1).png" alt="Betong Thai" class="footer-logo">
+    </div>
+</footer>
 </body>
 </html>

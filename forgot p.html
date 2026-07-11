@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign up.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Betong Thai</title>
+</head>
+
+<body>
+    <img src="thai food2.jpg" alt="Thai Food Platter Image" class="bg-photo">
+
+    <main class="card">
+        <img src="Betong Thai Logo (1).png" alt="Betong Thai Logo" class="logo-mark"> 
+        <h1> Reset Password</h1>
+        <p class="subtitle">Remember your password? <a href="#"> Sign in </a> </p>
+
+        <form class="signup-form" novalidate>
+            
+            <div class="field">
+                <label for="new-password" class="sr-only"> New Password</label>
+                <input type="password" id="new-password" name="new-password" placeholder="New Password *" autocomplete="password" aria-describedby="new-password-error" required>
+                
+                <button type="button" class="toggle-pw" aria-label="Show Password" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+                <p class="field-error" id="new-password-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+                <label for="reenter-password" class="sr-only"> Re-enter Password</label>
+                <input type="password" id="reenter=password" name="reenter-password" placeholder="Re=enter Password *" aria-describedby="reenter-password-error" required>
+                
+                <button type="button" class="toggle-pw confirm-toggle" aria-label="Show Password" aria-pressed="false">
+                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+                <p class="field-error" id="reenter-password-error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" class="btn btn-signup">
+                <span class="btn-label"> Reset Password </span>
+            </button>
+             <div class="form-alert" id="form-alert" role="alert" hidden></div>
+        </form>
+
+        </main>
+
+        <script src="forgot p.js"></script>
+</body>
+</html>
+

@@ -9,13 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Betong Thai</title>
 </head>
+
 <body>
     <div class = "utility-bar">
         <div class ="utility-left">
             <a href = "menu.html" class="utility-btn">Order Now</a>
             <a href ="booking.html" class="utility-btn"> Book a Table</a>
         </div>
-
+        
+        <div class="accesibility-controls">
+            '<button id="contrastBtn" aria-label="Toggle high contrast mode">
+                🌙 High Contrast
+            </button>
+        </div>
         <div class = "utility-right">
             <a href ="login.html"><img src = "Brown Cart Online Shop Icon Modern Logo (1).png" alt = "login-icon" class = "login-icon"> Login</a>
             <span class = "divider">|</span>
@@ -34,11 +40,28 @@
             </div>
  </div>
 
- <div class = "cart-panel" id="cartPanel">
-    <ul id = "cartItems">
-        <li> No items yet </li><!-- Cart items will be dynamically added here -->
-    </ul>
+<div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+<div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+        <span class="cart-header-title">🛒 Cart</span>
+        <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-footer">
+        <div class="cart-subtotal">
+            <span>Sub-total</span>
+            <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-actions">
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+            <button class="pay-btn" onclick="payNow()">Pay Now</button>
+            <button class="edit-btn" onclick="toggleCart()">Continue Ordering</button>
+        </div>
+    </div>
 </div>
+<script src="cart.js"></script>
+
+<script src="accessibility.js"></script>
 
 <section class = "hero">
     <img src = "thai food.webp" alt ="Handmade Thai dishes at Betong Thai" class = "hero-img">
@@ -72,7 +95,6 @@
 <section class="category-slideshow">
     <div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
             <div class="numbertext">1 / 7</div>
             <img src="stir fried1.jpg" style="width:100%">
@@ -146,8 +168,6 @@
         <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
 
         <!-- The dots/circles -->
         <div class="dots">
@@ -164,4 +184,92 @@
 
 <script src="home 1.js"></script>
 
+<section class="quality-section">
+    <h2 class="quality-heading">Some of Our Delicious Dishes</h2>
+    <div class="quality-grid">
+
+        <div class="quality-item">
+            <img src="tom yum gong.jpg" class="quality-img">
+            <h3>Tom Yum Gong</h3>
+            <p>Our most-loved dish — a famous Thai aromatic soup with prawn, mushroom, lemongrass and a touch of chilli. Bold, sour, and unmistakably Thai.</p>
+        </div>
+        <div class="quality-item">
+            <img src="Green curry.jpg" class="quality-img">
+            <h3>Green Curry</h3>
+            <p>Gaeng Keow Wan — a rich Thai green curry infused with coconut milk, fresh vegetables, bamboo shoots and basil leaves. Choose your protein and make it your own.</p>
+        </div>
+
+        <div class="quality-item">
+            <img src="pad kha pao (basil).jpg" class="quality-img">
+            <h3>Pad Kha Pao</h3>
+            <p>Stir fried with fresh chilli, bamboo shoots, basil and vegetables. A fiery, fragrant classic that keeps people coming back for more.</p>
+        </div>
+
+        <div class="quality-item">
+            <img src="Betong Fire Prawn.jpg" class="quality-img">
+            <h3>Betong Fire Prawn</h3>
+            <p>A Betong Thai specialty — lightly fried crumbed king prawn coated in our spicy special sauce, with steamed mixed vegetables and crispy basil leaf.</p>
+        </div>
+
+        <div class="quality-btn-wrap">
+            <a href="menu.html" class="quality-btn">Order Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="review-section">
+    <div class="review-card" id="reviewCard">
+        <div class="quote-mark quote-open">“</div>
+
+        <p class="review-text" id="reviewText">
+             Betong Thai is hands down the best Thai food in Macquarie Fields. The green curry tastes exactly like homemade — rich, fragrant, and never overly sweet like most places. This is our go-to every Friday night
+        </p>
+
+        <div class="review-author">
+            <p class="'reviewer-name" id="reviewerName">SARAH NGUYEN</p>
+            <p class="reviewer-title" id="reviewerTitle">REGULAR CUSTOMER</p>
+        </div>
+
+        <div class="quote-mark quote-close">”</div>
+
+        <div class="review-nav">
+            <button onclick="changeReview(-1)">←</button>
+            <button onclick="changeReview(1)">→</button>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-top"> 
+        <div class="footer-col">
+            <h3 class="footer-heading"> Opening Hours</h3>
+            <p class="footer-sub"> Mon - Fri </p>
+            <p class="footer-line"><strong>12pm - 9pm</strong></p>
+            <p class="footer-sub"> Saturday </p>
+            <p class="footer-line"><strong>4pm - 9pm</strong></p>
+            <p class="footer-sub"> Sunday </p>
+            <p class="footer-line"><strong>Closed</strong></p>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="footer-heading">Contact</h3>
+            <p class="footer-line">T. <a href="tel: +61296183300"> (02) 9618 3300</a></p>
+            <h3 class="footer-heading footer-heading-spaced"> Our Location </h3>
+            <p class="footer-line"> 71 Saywell Rd, Macquarie Fields NSW 2564</p>
+        </div>
+
+        <div class="footer-col footer-nav">
+            <a href="home 1.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="booking.html">Booking</a>
+            <a class="active" href="contact1.html">Contact</a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p class="footer-copy"> © 2026 All Rights Reserved | Betong Thai</p>
+        <img src="Betong Thai Logo (1).png" alt="Betong Thai" class="footer-logo">
+    </div>
+</footer>
 </body>
+</html>

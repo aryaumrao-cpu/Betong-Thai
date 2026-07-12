@@ -73,6 +73,16 @@ html, body {
     color: #999
 }
 
+.cart-icon img {
+    height: 96px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.high-contrast .cart-icon img {
+    filter: invert(1);
+    background-color: white;
+}
 .cart-icon {
     margin-left: auto;
     font-size: 20px;
@@ -83,26 +93,150 @@ html, body {
     align-items: center;
 }
 
-.cart-icon img {
-    height: 96px;
-}
 .cart-panel {
     display: none;
     position: fixed;
     top: 0;
     right: -400px;
-    width: 350px;
+    width: 320px;
+    max-width: 85vw;
+    height: 100dvh;
+    margin: 0;
     background-color: #fff6e5;
-    border: 2px solid #6e0e0e;
+    border-left: 3px solid #6e0e0e;
     transition: right 0.3s ease;
-    border-radius: 8px;
     padding: 20px;
     box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
     z-index: 9999;
+    overflow-y: auto;
+    box-sizing: border-box;
+    flex-direction: column;
 }
 
 .cart-panel.open {
-    display: block;
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid #eee;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.cart-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #691111;
+}
+
+.cart-items {
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.cart-items img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: none;
+}
+
+.cart-item-remove {flex: 1; min-width: 0;}
+.cart-item-name {font-weight: 600; font-size: 14px;}
+.cart-item-price {color: #691111; font-weight: 700; font-size: 13px; margin-top: 2px;}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    top: 14px;
+    right: 0;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.cart-actions {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-btn, .edit-btn {
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    background:#691111;
+    color: #fff;
+}
+
+.checkout-btn:hover {background: #8a1c1c;}
+
+.checkout-btn {background: #691111; color: #fff;}
+.checkout-btn:hover {background: #8a1c1c;}
+.edit-btn {background: #eee; color: #333;}
+.edit-btn:hover {background: #ddd;}
+
+.cart-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 9998;
+}
+
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.cart-item-qty-button {
+    width: 22px;
+    height:22px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
 }
 
 .topnav {
@@ -663,4 +797,73 @@ footer strong{color: #f2f2f2;}
         gap: 16px;
         text-align: center;
     }
+}
+
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#contrastBtn {
+    background: #fff;
+    color: #691111;
+    border: 2px solid #691111;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contrastBtn:hover {
+    background: #f2b800;
+}
+
+body.high-contrast {
+    background: #000;
+    color: #fff;
+}
+
+body.high-contrast .utility-bar,
+body.high-contrast .topnav,
+body.high-contrast .about-story,
+body.high-contrast .site-footer {
+    background: #000;
+}
+
+body.high-contrast .story-box,
+body.high-contrast .review-section,
+body.high-contrast .quality-section {
+    background: #111;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast p,
+body.high-contrast a {
+    color:#fff;
+}
+
+body.high-contrast .hero-btn,
+body.high-contrast .utility-btn,
+body.high-contrast .quality-btn,
+body.high-contrast button{
+    background:#FFD700;
+    color:#000;
+    border:2px solid #fff;
+}
+
+body.high-contrast a:hover {
+    color: #FFD700;
+}
+
+.high-contrast .menu-quicknav {
+    background-color: black;
+}
+
+.high-contrast.menu-quickna a,
+.high-contrast .menu-quicknav span {
+    color:black;
 }

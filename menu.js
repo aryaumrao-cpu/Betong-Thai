@@ -135,7 +135,7 @@ const DISHES = [
 ];
 
  const catById = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
- let cartCount = 0;
+
 
  const catNav = document.getElementById('catNav');
  CATEGORIES.forEach((c, i) => {
@@ -213,12 +213,36 @@ const DISHES = [
 
       <div class="dish-footer">
         <span class="dish-price">${priceLabel}</span>
-        <button class="add-btn" onclick="addToCart('${d.name.replace(/'/g,"")}', ${d.num})">Add</button>
+       <button class="add-btn" onclick="addToCart(
+        ${JSON.stringify(d.name)},
+        getFinalPrice(${d.num}, ${d.price}),
+        ${JSON.stringify(d.img)},
+        getDishQty(${d.num})
+      ); document.getElementById('qty-${d.num}').textContent = 1;">
+        Add
+      </button>
       </div>
+
+    <div class="qty-select">
+    <button onclick="changeDishQty(${d.num}, -1)">−</button>
+    <span id="qty-${d.num}">1</span>
+    <button onclick="changeDishQty(${d.num}, 1)">+</button>
+</div>
     </div>
   `;
 }
  
+function changeDishQty(num, delta) {
+  const el = document.getElementById(`qty-${num}`);
+  let qty = parseInt(el.textContent);
+  qty = Math.max(1, qty + delta);
+  el.textContent = qty;
+}
+
+function getDishQty(num) {
+  return parseInt(document.getElementById(`qty-${num}`).textContent);
+}
+
 function updatePrice(num, basePrice) {
     const protein = document.getElementById(`protein-${num}`).value;
     const extra = PROTEIN_PRICES[protein];
@@ -227,20 +251,10 @@ function updatePrice(num, basePrice) {
     document.querySelector(`#dish-${num} .dish-price`).textContent = `$${finalPrice}`; 
 }
 
-function toggleCart(){document.getElementById('cartPanel').classList.toggle('open');}
-function addToCart(name, num) {
-    const protein = document.getElementById(`protein-${num}`)?.value || "";
-    const basePrice = DISHES.find(d => d.num === num).price;
-    const extra = PROTEIN_PRICES[protein];
-    const finalPrice = (basePrice + extra).toFixed(2);
-   
-    cartCount++;
-    document.querySelector('.cart-count').textContent = cartCount;
-    const list = document.getElementById('cartItems');
-    if(cartCount === 1) list.innerHTML = '';
-    const li = document.createElement('li');
-    li.textContent = `${name} ${protein ? '(' + protein + ')' : ''} - $${finalPrice}`;;
-    list.appendChild(li);
+function getFinalPrice(num, basePrice) {
+  const protein = document.getElementById(`protein-${num}`)?.value || "";
+  const extra = PROTEIN_PRICES[protein] || 0;
+  return basePrice + extra;
 }
 
 const input = document.getElementById('searchInput');
@@ -304,7 +318,6 @@ function score(d, q) {
     return 0;
 }
 
-
 function runSearch(query) {
     query = query.trim();
     const clearBtn = document.getElementById('clearBtn');
@@ -363,6 +376,7 @@ function selectSuggestion(num) {
     }
   });
 }
+
 
 function clearSearch() {
     input.value = '';

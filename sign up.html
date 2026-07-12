@@ -16,7 +16,7 @@
     <main class="card">
         <img src="Betong Thai Logo (1).png" alt="Betong Thai Logo" class="logo-mark"> 
         <h1>Sign Up</h1>
-        <p class="subtitle">Already have an account? <a href="#"> Sign in </a> </p>
+        <p class="subtitle">Already have an account? <a href="login.html"> Sign in </a> </p>
     
         <button type="button" class="btn btn-facebook">
             <img src="Black and Orange Maverick Crew Entertainment Logo (4).png" class="icon-img" alt="Facebook Logo">
@@ -54,24 +54,25 @@
                 <input type="password" id="password" name="password" placeholder="Password" autocomplete="password" aria-describedby="password-error" required>
                 
                 <button type="button" class="toggle-pw" aria-label="Show Password" aria-pressed="false">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
                         <circle cx="12" cy="12" r="3"/>
                     </svg>
                 </button>
+            
                 <p class="field-error" id="password-error" aria-live="polite"></p>
             </div>
 
             <div class="field">
                 <label for="confirm" class="sr-only"> Confirm Password</label>
                 <input type="password" id="confirm" name="confirm" placeholder="Confirm Password" autocomplete="new-password" aria-describedby="confirm-error" required>
-                
                 <button type="button" class="toggle-pw confirm-toggle" aria-label="Show Password" aria-pressed="false">
                     <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                         <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
                         <circle cx="12" cy="12" r="3"/>
                     </svg>
                 </button>
+
                 <p class="field-error" id="confirm-error" aria-live="polite"></p>
             </div>
 

@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const svg = pwToggle.querySelector("svg")
         if (isHidden) {
             svg.innerHTML = `
-                <path d="M17.94 17.94L6.06 6.06M1 12s4-7 11-7c2.5 0 4.67.8 6.5 2M23 12s-4 7-11 7c-2.5 0-4.67-.8-6.5-2"/>
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="2" y1="2" x2="22" y2="22"/>
             `;
         } else {
             svg.innerHTML = `
@@ -33,7 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const svg = confirmToggle.querySelector("svg");
             if (isHidden) {
                 svg.innerHTML = `
-                <path d="M17.94 17.94L6.06 6.06M1 12s4-7 11-7c2.5 0 4.67.8 6.5 2M23 12s-4 7-11 7c-2.5 0-4.67-.8-6.5-2"/>
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="2" y1="2" x2="22" y2="22"/>
             `;
             } else {
                 svg.innerHTML = `

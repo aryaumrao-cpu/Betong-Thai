@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="checkout page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Checkout - Betong Thai</title>
+</head>
+<body>
+    <header class="checkout-topbar">
+        <img src="Betong Thai Logo (1).png" class="checkout-logo" alt="Betong Thai ">
+        <a href="menu.html" class="back-link">← Back to Menu</a>
+    </header>
+
+    <div class="checkout-wrap">
+        <div class="checkout-left">
+            <h1 class="checkout-title">Checkout</h1>
+    
+            <div class="cart-card">
+                <div class="cart-card-header"></div>
+                <span>🛒 My Order</span>
+            </div>
+            <ul id="checkoutItems" class="checkout-item-list"></ul>
+
+            <div class="checkout-breakdown">
+                <div class="breakdown-row">
+                    <span>Subtotal</span>
+                    <span id="breakdownSubtotal">$0.00</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Delivery fee</span>
+                    <span>$0.00</span>
+                </div>
+                <div class="breakdown-row total-row">
+                    <span>Total</span>
+                    <span id="breakdownTotal">$0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <div class="checkout-right">
+        <div class="details-card">
+            <h2>Your Details</h2>
+            <input type="text" id="custName" placeholder="Full Name">
+            <input type="tel" id="custPhone" placeholder="Phone Number">
+            <input type="text" id="custAddress" placeholder="Delivery Address">
+            <textarea id="custNotes" placeholder="Order notes (optional)"></textarea>
+        </div>
+        <div class="payment-card">
+            <h2>Total Payment</h2>
+            <div class="payment-row">
+                <span>Subtotal</span>
+                <span id="paymentSubtotal">$0.00</span>
+            </div>
+            <div class="payment-row payment-total">
+                <span>Total to Pay</span>
+                <span id="paymentTotal">$0.00</span>
+            </div>
+            <button class="send-order-btn" onclick="payNow()">Pay Now</button>
+        </div>
+    </div>
+</div>
+
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>

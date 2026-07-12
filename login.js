@@ -7,7 +7,21 @@ document.addEventListener("DOMContentLoaded", function() {
         pwInput.type = isHidden ? "text" : "password";
         toggleBtn.setAttribute("aria-pressed", isHidden);
         toggleBtn.classList.toggle("closed");
-    });
+
+        const svg = toggleBtn.querySelector("svg");
+        if (isHidden) {
+            svg.innerHTML = `
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+            <line x1="2" y1="2" x2="22" y2="22"/>
+        `;
+    } else {
+        svg.innerHTML = `
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+        `;
+    }
+});
 
     document.querySelector(".btn-google").addEventListener("click", function() {
         window.location.href = "https://accounts.google.com/signin";

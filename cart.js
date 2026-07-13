@@ -14,7 +14,7 @@ function toggleCart() {
 
 function addToCart(name, price, img, qty = 1) {
   const items = getCart();
-  const existing = items.find(item => item.name === name && item.price === price); 
+  const existing = items.find(item => item.name === name); 
 
   if (existing) {
     existing.qty += qty;
@@ -65,7 +65,7 @@ function renderCart() {
         </li>
     `).join('');
 
-    const subtotal = items.reduce((sum, item) => sum +item.price, 0);
+    const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
     document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
 }
 

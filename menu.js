@@ -63,7 +63,7 @@ const DISHES = [
      
      {num: 21, name:'Tom Yum Gong', thai:'Prawn', cat:'soup', img: 'tom yum gong.jpg',
      price:17.90, desc: 'Famous Thai aromatic soup with prawn, mushroom, lemongrass and a touch of chilli. Entrée $8.90 / Main $17.90.', spice:2, veg:false},
-     {num: 21, name:'Tom Kha Gai', thai:'', cat:'soup', img: 'Tom Kha Gai.jpg',
+     {num: 22, name:'Tom Kha Gai', thai:'', cat:'soup', img: 'Tom Kha Gai.jpg',
      price:15.90, desc: 'Creamy aromatic soup with mushroom, chicken and coconut-cream, flavoured with kaffir lime leaf and galangal. Entrée $7.90 / Main $15.90', spice:1, veg:false},
      {num: 23, name:'Tom Po Tak', thai:'', cat:'soup', img:'Tom Po Tak.jpg', 
      price:8.90, desc: 'Mixed seafood soup with lemon juice, Thai herbvs, mushroom and basil.', spice:2, veg:false},

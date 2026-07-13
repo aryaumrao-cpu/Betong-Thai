@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const btn = document.getElementById("contrastBtn");
 
-    if(localStorage.getItem("constrast") === "on"){
+    if(localStorage.getItem("contrast") === "on"){
         document.body.classList.add("high-contrast");
         btn.textContent = "☀ Normal Mode";
     }

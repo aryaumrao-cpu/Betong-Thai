@@ -8,7 +8,7 @@ viewYear = today.getFullYear();
 viewMonth = today.getMonth();
 
 const MONTH_NAMES = ['January', 'February','March','April','May','June','July','August','September','October','November','December'];
-const DAY_NAMES_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+const DAY_NAMES_SHORT = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 const calendarMonthEl = document.getElementById('calendarMonth');
 const calendarGridEl = document.getElementById('calendarGrid');
@@ -41,8 +41,9 @@ function renderCalendar() {
             btn.addEventListener('click', () => selectDate(cellDate));
         }
         if(cellDate.getTime() === today.getTime()) btn.classList.add('today');
-        if(selectedDate && cellDate.getTime() === selectDate.getTime()) btn.classList.add('selected');
-
+        if(selectedDate && cellDate.getTime() === selectedDate.getTime()) {
+            btn.classList.add('selected');
+        }
         calendarGridEl.appendChild(btn);
     }
 }
@@ -124,18 +125,63 @@ const phoneInput = document.getElementById('guestPhone');
 const emailInput = document.getElementById('guestEmail');
 const notesInput = document.getElementById('guestNotes');
 const toStep3Btn = document.getElementById('toStep3');
+const fieldTouched = { name: false, phone: false, email: false };
 
 function validateStep2() {
-    const ok = nameInput.value.trim().length > 0 &&
-                phoneInput.value.trim().length > 0 &&
-                /\S+@\S+\.\S+/.test(emailInput.value.trim());
-  toStep3Btn.disabled = !ok;
+    let valid = true;
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.replace(/\s/g, "");
+    const email = emailInput.value.trim();
+
+    const nameValid = /^[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*$/.test(name);
+    const phoneValid = /^04\d{8}$/.test(phone);
+    const emailValid = /\S+@\S+\.\S+/.test(email);
+
+    document.getElementById('nameError').textContent = 
+        (!nameValid && fieldTouched.name) ? "Please enter a valid name." : "";
+    document.getElementById('phoneError').textContent = 
+        (!phoneValid && fieldTouched.phone) ? "Please enter a valid phone number." : "";
+    document.getElementById('emailError').textContent = 
+        (!emailValid && fieldTouched.email) ? "Please enter a valid email address." : "";
+
+    if (!nameValid || !phoneValid || !emailValid) {
+        valid = false;
+    }
+
+    toStep3Btn.disabled = !valid;
+
+    return valid;
 }
-[nameInput, phoneInput, emailInput].forEach(el => el.addEventListener('input', validateStep2));
+
+nameInput.addEventListener('input', () => validateStep2());
+phoneInput.addEventListener('input', () => validateStep2());
+emailInput.addEventListener('input', () => validateStep2());
+
+nameInput.addEventListener('blur', () => {
+    fieldTouched.name = true;
+    validateStep2();
+});
+
+phoneInput.addEventListener('blur', () => {
+    fieldTouched.phone = true;
+    validateStep2();
+});
+
+emailInput.addEventListener('blur', () => {
+    fieldTouched.email = true;
+    validateStep2();
+});
 
 toStep3Btn.addEventListener ('click', () => {
-    renderSummary();
-    goToStep(3);
+    fieldTouched.name = true;
+    fieldTouched.phone = true;
+    fieldTouched.email = true;
+    
+    if (validateStep2()) {
+        renderSummary();
+        goToStep(3);
+    }
 });
 
 function renderSummary() {

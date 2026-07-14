@@ -649,3 +649,9 @@ filter: brightness(40%);
         text-align: center;
     }
 }
+
+.topnav a.active {
+    background-color: #f2b800;
+    color: #691111;
+    border-radius: 6px;
+}

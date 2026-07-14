@@ -35,7 +35,7 @@
     <div class = "cart-icon" onclick = "toggleCart()">
         <img src = "Brown Cart Online Shop Icon Modern Logo.png" alt = "Cart Icon">
         <span class = "cart-count">0</span>
-            </div>
+    </div>
  </div>
     <script src="accessibility.js"></script>
 <section class = "hero">
@@ -69,6 +69,8 @@
         <button class="scrollnav-arrow" onclick="scrollCatNav(1)" aria-label="Scroll right"> &gt; </button>
  </div>
 
+ <div id="cart-toast"></div>
+
  <section class="menu-page" id="menuPage"></section>
 
  <footer class="site-footer">
@@ -85,7 +87,7 @@
 
         <div class="footer-col">
             <h3 class="footer-heading">Contact</h3>
-            <p class="footer-line">T. <a href="tel: +61296183300"> (02) 9618 3300</a></p>
+            <p class="footer-line">T. (02) 9618 3300</p>
             <h3 class="footer-heading footer-heading-spaced"> Our Location </h3>
             <p class="footer-line"> 71 Saywell Rd, Macquarie Fields NSW 2564</p>
         </div>
@@ -120,7 +122,6 @@
 
     <div class="cart-actions">
         <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
-        <button class="pay-btn">Pay Now</button>
         <button class="edit-btn" onclick="toggleCart()">Continue Ordering</button>
     </div>
 </div>

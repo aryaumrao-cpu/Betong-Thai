@@ -740,3 +740,16 @@ filter: brightness(50%);
         text-align: center;
     }
 }
+
+.error-msg {
+    color: #C23B22;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.topnav a.active {
+    background-color: #f2b800;
+    color: #691111;
+    border-radius: 6px;
+}

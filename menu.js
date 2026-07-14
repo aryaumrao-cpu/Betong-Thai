@@ -110,8 +110,8 @@ const DISHES = [
      price:6.50, desc: 'Crispy roti crepes with honey, banana and ice cream.', spice:0, veg:true},
      {num: 43, name:'Banana Fritter', thai:'With ice cream', cat:'dessert', img: 'banana fritters.jpg',
      price:6.50, desc: 'Fried banana fritter served with ice cream.', spice:0, veg:true},
-     {num: 44, name:'White Sticky Rice', thai:'Custard or mango', cat:'dessert', img: 'sticky rice.jpg',
-     price:6.50, desc: 'Sticky rice with custard $6.50, or fresh mango (seasonal) $8.50.', spice: 0, veg:true},
+     {num: 44, name:'White Sticky Rice', thai:'Custard', cat:'dessert', img: 'sticky rice.jpg',
+     price:6.50, desc: 'Sticky rice with custard', spice: 0, veg:true},
      {num: 45, name:'Vanilla Ice Cream', thai:'', cat:'dessert', img: 'vanilla ice cream.jpg',
      price:3.00, desc: 'Vanilla ice cream with your choice of topping: chocolate, strawberry or caramel.', spice: 0, veg: true},
      
@@ -184,9 +184,13 @@ const DISHES = [
     const spiceIcons = '🌶️'.repeat(d.spice);
     const tags = [
         d.side ? '<span class="tag">Side</span>' : '',
-    (!d.side && d.spice > 0) ? `<span class="tag">${spiceIcons}</span>` : ''
+        d.spice > 0
+            ? `<span class="tag">${spiceIcons}</span>`
+            : `<span class="tag tag-nospice">No chilli</span>`
   ].join('');
     const priceLabel = d.estimate ? `From $${d.price.toFixed(2)}` : `$${d.price.toFixed(2)}`;
+    const safeName = String(d.name).replace(/'/g, "\\'");
+    const safeImg = String(d.img).replace(/'/g, "\\'");
     
     return `
     <div class="dish-card" id="dish-${d.num}" data-num="${d.num}">
@@ -213,18 +217,13 @@ const DISHES = [
 
       <div class="dish-footer">
         <span class="dish-price">${priceLabel}</span>
-       <button class="add-btn" onclick="addToCart(
-        ${JSON.stringify(d.name)},
-        getFinalPrice(${d.num}, ${d.price}),
-        ${JSON.stringify(d.img)},
-        getDishQty(${d.num})
-      ); document.getElementById('qty-${d.num}').textContent = 1;">
+       <button class="add-btn" onclick="addToCart('${safeName}', getFinalPrice(${d.num}, ${d.price}), '${safeImg}', getDishQty(${d.num}), getSelectedProtein(${d.num})); document.getElementById('qty-${d.num}').textContent = 1;">
         Add
       </button>
       </div>
 
     <div class="qty-select">
-    <button onclick="changeDishQty(${d.num}, -1)">−</button>
+    <button onclick="changeDishQty(${d.num}, -1)">-</button>
     <span id="qty-${d.num}">1</span>
     <button onclick="changeDishQty(${d.num}, 1)">+</button>
 </div>
@@ -241,6 +240,11 @@ function changeDishQty(num, delta) {
 
 function getDishQty(num) {
   return parseInt(document.getElementById(`qty-${num}`).textContent);
+}
+
+function getSelectedProtein(num) {
+  const select = document.getElementById(`protein-${num}`);
+  return select ? select.value : '';
 }
 
 function updatePrice(num, basePrice) {
@@ -376,7 +380,6 @@ function selectSuggestion(num) {
     }
   });
 }
-
 
 function clearSearch() {
     input.value = '';

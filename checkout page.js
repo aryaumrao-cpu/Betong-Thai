@@ -1,6 +1,6 @@
 function renderCheckout() {
     const items = getCart();
-    const list = document.getElementById('çheckoutItems');
+    const list = document.getElementById('checkoutItems');
 
     if (items.length === 0) {
         list.innerHTML = '<li>Your cart is empty.</li>';
@@ -15,11 +15,11 @@ function renderCheckout() {
                 <div class="item-name">${item.name}</div>
                 <div class="item-qty">$${item.qty}x</div>
             </div>
-            <div class="item-price">$${(item.price * item.qty).toFixed(2)}
+            <div class="item-price">$${(item.price * item.qty).toFixed(2)}</div>
         </li>
     `).join('');
 
-    const subtotal = items.reduce((sum, item) => sum (item.price * item.qty), 0);
+    const subtotal = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
     setTotals(subtotal);
 }
 

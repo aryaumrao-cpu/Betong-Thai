@@ -12,19 +12,20 @@ function toggleCart() {
     document.body.classList.toggle('no-scroll');
 }
 
-function addToCart(name, price, img, qty = 1) {
+function addToCart(name, price, img, qty = 1, protein = '') {
   const items = getCart();
-  const existing = items.find(item => item.name === name); 
+  const existing = items.find(item => item.name === name && item.protein === protein);
 
   if (existing) {
     existing.qty += qty;
   } else {
-    items.push({name, price, img, qty});
+    items.push({name, price, img, qty, protein});
   }
-
 
   saveCart(items);
   renderCart();
+
+  showCartToast(`${qty}x ${name}${protein ? ` (${protein})` : ''} added to cart`);
 }
 
 function removeFromCart(index) {
@@ -32,6 +33,17 @@ function removeFromCart(index) {
     items.splice(index, 1);
     saveCart(items);
     renderCart();
+}
+
+function showCartToast(message) {
+    const toast = document.getElementById("cart-toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => { 
+        toast.classList.remove("show");
+    }, 2500);
 }
 
 function changeQty(index, delta) {
@@ -57,8 +69,9 @@ function renderCart() {
             <img src="${item.img || 'placeholder.jpg'}" alt="${item.name}">
             <div class="cart-item-info">
                 <div class="cart-item-name">${item.name}</div>
+                ${item.protein ? `<div class="cart-item-protein">Protein: ${item.protein}</div>` : ''}
                 <div class="cart-item-price">
-                ${item.qty} x $${item.price.toFixed(2)} 
+                ${item.qty} x $${Number(item.price).toFixed(2)} 
                 </div>
             </div>
             <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>

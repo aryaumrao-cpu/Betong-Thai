@@ -48,7 +48,6 @@
     </div>
  </section>
 
-<<<<<<< HEAD
  <section class="booking-hero">
     <h1> Make an online booking</h1>
     <p>After our latest renovation we now seat over 120 guests, including a private function room for up to 30. The dining room is dressed with Thai art and handwoven textiles sourced directly from Betong — a genuine backdrop for your next Thai dinner or celebration.</p>
@@ -89,8 +88,8 @@
                 <h3>How many people are coming?</h3>
                 <label class="guest-label" for="guestCount">Booking for</label>
                 <div class="guest-counter">
-                    <div class="guest-count-box" id="guestCount">0</div>
                     <button class="guest-btn" id="guestMinus" aria-label="Remove a guest">-</button>
+                    <div class="guest-count-box" id="guestCount">0</div>
                     <button class="guest-btn guest-btn-add" id="guestPlus" aria-label="Add a guest">+</button>
                 </div>
                 <p class="guest-note">Parties larger than 12 - call the restaurantdirectly to arrangea function room.</p>
@@ -104,13 +103,16 @@
     <div class="booking-step" id="step2" hidden>
         <div class="details-form">
             <label>Full name 
-                <input type="text" id="guestName" placeholder="Your Name">
+                <input type="text" id="guestName" placeholder="Your Full Name">
+                <span class="error-msg" id="nameError"></span>
             </label>
             <label> Phone Number
-                <input type="tel" id="guestPhone" placeholder="04xx xxx xxx">
+                <input type="tel" id="guestPhone" placeholder="04XX XXX XXX">
+                 <span class="error-msg" id="phoneError"></span>
             </label>
             <label> Email
                 <input type="email" id="guestEmail" placeholder="you@example.com">
+                 <span class="error-msg" id="emailError"></span>
             </label>
             <label>Special requests <span class="optional">(optional)</span> <textarea id="guestNotes" rows="3" placeholder="Allergies, celebrations, seating preferences...."></textarea>
             </label>
@@ -155,7 +157,7 @@
 
         <div class="footer-col">
             <h3 class="footer-heading">Contact</h3>
-            <p class="footer-line">T. <a href="tel: +61296183300"> (02) 9618 3300</a></p>
+            <p class="footer-line">T. (02) 9618 3300</p>
             <h3 class="footer-heading footer-heading-spaced"> Our Location </h3>
             <p class="footer-line"> 71 Saywell Rd, Macquarie Fields NSW 2564</p>
         </div>
@@ -173,7 +175,5 @@
         <img src="Betong Thai Logo (1).png" alt="Betong Thai" class="footer-logo">
     </div>
 </footer>
-=======
->>>>>>> c70f85ff346742d4819442705d3f57b6aa6fa44f
 </body>
 </html>

@@ -3,9 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="pay now.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Pay Now - Betong Thai</title>
 </head>
 <body>
-    
+<header class="checkout-topbar">
+    <img src="Betong Thai Logo (1).png" class="checkout-logo" alt="Betong Thai">
+    <a href="checkout.html" class="back-link">← Back to Checkout</a>
+</header>
+
+<div class="pay-wrap">
+    <h1 class="pay-title">Pay Now</h1>
+
+    <div class="pay-grid">
+
+        <div class="pay-card">
+            <h2 class="pay-card-heading">Choose a payment method</h2>
+
+            <div class="method-row" role="tablist" aria-label="Payment method">
+                <button type="button" class="method-btn is-active" data-method="card" role="tab" aria-selected="true">
+                    <span class="method-icon">💳</span> Card
+                </button>
+                <button type="button" class="method-btn" data-method="paypal" role="tab" aria-selected="false">
+                    <img src="Paypal_2014_logo.png" alt="PayPal logo" class="method-logo"> PayPal
+                </button>
+                 <button type="button" class="method-btn" data-method="other" role="tab" aria-selected="false">
+                    <span class="method-icon">📱</span> Other
+                </button>
+            </div>
+
+            <form id="cardForm" class="method-panel" data-panel="card" novalidate>
+                <div class="field">
+                    <label for="cardName">Name on Card</label>
+                    <input type="text" id="cardName" placeholder="Jamie Somsak" autocomplete="cc-name">
+                    <span class="field-error" id="err-cardName"></span>
+                </div>
+
+                <div class="field">
+                    <label for="cardNumber">Card number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number" maxlength="23">
+                    <span class="field-error" id="err-cardNumber"></span>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="cardExpiry">Expiry</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" maxlength="5">
+                        <span class="field-error" id="err-cardExpiry"></span>
+                    </div>
+                    <div class="field">
+                        <label for="cardCvv">CVV</label>
+                        <input type="text" id="cardCvv" placeholder="123" inputmode="numeric" autocomplete="cc-csc" maxlength="4">
+                        <span class="field-error" id="err-cardCvv"></span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="cardZip">Billing postcode</label>
+                    <input type="text" id="cardZip" placeholder="000" inputmode="numeric" autocomplete="postal-code" maxlength="10">
+                    <span class="field-error" id="err-cardZip"></span>
+                </div>
+
+                <button type="submit" class="pay-submit-btn" id="cardSubmitBtn">
+                    <span class="btn-label">Pay <span id="cardPayAmount">$0.00</span></span>
+                </button>
+            </form>
+
+            <div class="method-panel is-hidden" data-panel="paypal">
+                <p class="redirect-copy">You'll be sent to PayPal to finish paying securely. Your order stays saved while you're there.</p>
+                <a href="https://www.paypal.com/au/home" target="_blank" rel="noopener" class="pay-submit-btn redirect-btn">
+                    Continue to PayPal →
+                </a>
+            </div>
+
+            <div class="method-panel is-hidden" data-panel="other">
+                <p class="redirect-copy">Pay with Apple Pay, Google Pay, or your bank app.
+                </p>
+
+                <a href="https://pay.google.com/" target="_blank" rel="noopener" class="pay-submit-btn redirect-btn">
+                    Continue to Other Payment →
+                </a>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <h2 class="pay-card-heading">Order summary</h2>
+            <ul id="paySummaryItems" class="summary-item-list"></ul>
+
+            <div class="receipt-edge" aria-hidden="true"></div>
+
+            <div class="summary-breakdown">
+                <div class="breakdown-row">
+                    <span>Subtotal</span>
+                    <span id="paySubtotal">$0.00</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Delivery fee</span>
+                    <span>$0.00</span>
+                </div>
+                <div class="breakdown-row total-row">
+                    <span>Total</span>
+                    <span id="payTotal">$0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="success-overlay" id="successOverlay" aria-hidden="true">
+    <div class="success-card" role="alertDialog" aria-live="assertive">
+        <div class="success-check">✓</div>
+        <h2>Payment successful</h2>
+        <p>Your order has been sent to the kitchen.</p>
+        <p class="order-ref" id="orderRef"></p>
+        <a href="menu.html" class="pay-submit-btn">Back to menu</a>
+    </div>
+</div>
+
+<script src="cart.js"></script>
+<script src="pay now.js"></script>
 </body>
 </html>

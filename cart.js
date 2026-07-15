@@ -60,10 +60,13 @@ function changeQty(index, delta) {
 
 function renderCart() {
   const items = getCart();
+
+  const list = document.getElementById('cartItems');
+  if (!list) return;
+
   document.querySelector('.cart-count').textContent = 
     items.reduce((sum, item) => sum + item.qty, 0);
 
-  const list = document.getElementById('cartItems');
   list.innerHTML = items.map((item, i) => `
         <li>
             <img src="${item.img || 'placeholder.jpg'}" alt="${item.name}">

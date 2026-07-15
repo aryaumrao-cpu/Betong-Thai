@@ -8,19 +8,35 @@ function renderCheckout() {
         return;
     }
 
-    list.innerHTML = items.map(item => `
-        <li>
+    list.innerHTML = items.map((item, index) => `
+        <li class="checkout-item">
             <img src="${item.img || 'placeholder.jpg'}" alt="${item.name}">
-            <div class="item-details">
-                <div class="item-name">${item.name}</div>
-                <div class="item-qty">$${item.qty}x</div>
-            </div>
-            <div class="item-price">$${(item.price * item.qty).toFixed(2)}</div>
+
+        <div class="checkout-info">
+            <div class="checkout-name">${item.name}</div>
+
+            ${item.protein ? `<div class="checkout-protein">Protein: ${item.protein}</div>` : ''}
+            
+            <div class="checkout-qty">${item.qty} x $${Number(item.price).toFixed(2)}</div>
+        </div>
+
+        <button class="checkout-remove" onclick="removeCheckoutItem(${index})">✕</button>
         </li>
     `).join('');
 
     const subtotal = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
     setTotals(subtotal);
+}
+
+function removeCheckoutItem(index) {
+    const items = getCart();
+    items.splice(index, 1);
+    saveCart(items);
+    renderCheckout();
+}
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || []; 
 }
 
 function setTotals(subtotal) {

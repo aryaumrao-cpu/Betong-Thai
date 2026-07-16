@@ -178,7 +178,19 @@ const DISHES = [
     `;
  }
 
- renderCategory(CATEGORIES[0].id);
+ const params = new URLSearchParams(window.location.search);
+ const selectedCategory = params.get("category");
+
+ if (
+      selectedCategory &&
+      CATEGORIES.some(c => c.id === selectedCategory)
+ ) {
+      setActiveCat(selectedCategory);
+      renderCategory(selectedCategory);
+ } else {
+      setActiveCat(CATEGORIES[0].id);
+      renderCategory(CATEGORIES[0].id);
+ }
 
  function dishCardHTML(d, c){
     const spiceIcons = '🌶️'.repeat(d.spice);

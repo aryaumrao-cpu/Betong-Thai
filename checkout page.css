@@ -178,7 +178,7 @@ body {
 
 .checkout-item {
     display: flex;
-    align-items: coneter;
+    align-items: center;
     gap: 12px;
     padding: 12px 0;
     border-bottom: 1px solid #eee;
@@ -226,7 +226,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 0;
+    margin-top: 54px;
     padding-top: 0;
 }
 
@@ -239,4 +239,203 @@ body {
 .checkout-left,
 .checkout-right {
     align-self: flex-start;
+}
+
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#contrastBtn {
+    background: #fff;
+    color: #691111;
+    border: 2px solid #691111;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contrastBtn:hover {
+    background: #f2b800;
+}
+
+body.high-contrast {
+    background-color: #000;
+    color: #ffffff;
+}
+
+body.high-contrast .checkout-topbar {
+    background-color: #1f0000;
+    border-bottom: 3px solid #FFD700;
+}
+
+body.high-contrast #contrastBtn {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .back-link {
+    color: #fff;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast span {
+    color: #fff;
+}
+
+body.high-contrast .cart-card,
+body.high-contrast .details-card,
+body.high-contrast .payment-card,
+body.high-contrast .checkout-breakdown {
+    background-color: #000;
+    border: 2px solid  #FFD700;
+    color: #fff;
+    padding: 24px;
+}
+
+body.high-contrast input,
+body.high-contrast textarea {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid  #FFD700;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+    color: #ccc;
+}
+
+body.high-contrast .breakdown-row,
+body.high-contrast .payment-row {
+    border-color: #fff;
+}
+
+body.high-contrast .send-order-btn {
+    background-color:  #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .send-order-btn:hover {
+    background-color: #000;
+    color:  #FFD700;
+    border-color:#FFD700;
+}
+
+body.high-contrast .checkout-item-list li {
+    color: #fff;
+}
+
+body.hig-contrast .payment-total,
+body.high-contrast .total-row {
+    color:  #FFD700;
+}
+
+.field-error {
+    display:block;
+    min-height: 16px;
+    margin: -4px 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a00;
+}
+
+.details-card input.invalid,
+.details-card textarea.invalid {
+    border-color: #a00;
+}
+
+body.high-contrast .field-error {
+    color: #ff6b52;
+}
+
+body.high-contrast .details-card input.invalid,
+body.high-contrast .details-card textarea.invalid {
+    border-color: #ff6b52;
+}
+
+@media (max-width: 430px) {
+    .checkout-topbar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .checkout-logo {
+        height: 65px;
+    }
+
+    .back-link {
+        font-size: 13px;
+    }
+
+    .accessibility-controls {
+        margin-left: 0;
+    }
+
+    #contrastBtn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .checkout-wrap {
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .checkout-left,
+    .checkout-right {
+        width: 100%;
+        min-width: 0;
+        margin-top: 0;
+    }
+
+    .cart-card,
+    .details-card,
+    .payment-card {
+        padding: 16px;
+    }
+
+    .checkout-title {
+        font-size: 24px;
+    }
+
+    .checkout-item-list li {
+        gap: 8px;
+    }
+
+    .checkout-item-list img,
+    .checkout-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .item-name,
+    .checkout-name {
+        font-size: 14px;
+    }
+
+    .payment-total {
+        font-size: 18px;
+    }
+
+    .send-order-btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    body.high-contrast .cart-card,
+    body.high-contrast .details-card,
+    body.high-contrast .payment-card,
+    body.high-contrast .checkout-breakdown {
+        padding: 16px;
+    }
+
 }

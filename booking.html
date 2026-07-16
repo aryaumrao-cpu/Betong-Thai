@@ -7,13 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Betong Thai</title>
+    <title> Booking | Betong Thai</title>
 </head>
 <body>
     <div class = "utility-bar">
         <div class ="utility-left">
             <a href = "menu.html" class="utility-btn">Order Now</a>
             <a href ="booking.html" class="utility-btn"> Book a Table</a>
+        </div>
+
+        <div class="accessibility-controls">
+            <button id="contrastBtn" aria-label="Toggle high contrast mode">
+                🌙 High Contrast
+            </button>
         </div>
 
         <div class = "utility-right">
@@ -34,11 +40,25 @@
             </div>
  </div>
 
- <div class = "cart-panel" id = "cartPanel">
-    <ul id = "cartItems">
-        <li> No items yet </li><!-- Cart items will be dynamically added here -->
-    </ul>
+ <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+<div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+        <span class="cart-header-title">🛒 Cart</span>
+        <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-footer">
+        <div class="cart-subtotal">
+            <span>Sub-total</span>
+            <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-actions">
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+            <button class="edit-btn" onclick="window.location.href='menu.html'">Order Now</button>
+        </div>
+    </div>
 </div>
+<script src="cart.js"></script>
     
 <section class = "hero">
     <img src = "tables restaurant.jpg" alt ="Tables at Betong Thai" class = "hero-img">
@@ -142,6 +162,7 @@
  </section>
 
  <script src="booking.js"></script>
+ <script src="accessibility.js"></script>
 
  <footer class="site-footer">
     <div class="footer-top"> 
@@ -165,8 +186,8 @@
         <div class="footer-col footer-nav">
             <a href="home 1.html">Home</a>
             <a href="menu.html">Menu</a>
-            <a href="booking.html">Booking</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="booking.html" class="active">Booking</a>
+            <a href="contact1.html" >Contact</a>
         </div>
     </div>
     

@@ -317,3 +317,153 @@ h1 {
     display: block;
 }
 @keyframes spin{to{transform:rotate(360deg);}}
+
+.accessibility-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#contrastBtn {
+    background: #fff;
+    color: #691111;
+    border: 2px solid #691111;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contrastBtn:hover {
+    background: #f2b800;
+}
+
+body.high-contrast {
+    background: #000;
+}
+
+body.high-contrast .bg-photo {
+    filter: brightness(0.3);
+}
+
+body.high-contrast .card {
+    background: #111;
+    border: 2px solid #FFD700;
+    box-shadow: none;
+}
+
+body.high-contrast h1 {
+    color: #fff;
+}
+
+body.high-contrast .subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.high-contrast .subtitle a {
+    color: #FFD700;
+}
+
+body.high-contrast .btn-facebook {
+    background: #000;
+    color: #fff;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .btn-google {
+    background: #000;
+    color: #fff;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .btn-apple {
+    background: #000;
+    color: #fff;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .btn:hover {
+    filter: none;
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .divider {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.high-contrast .divider::before,
+body.high-contrast .divider::after {
+    background: #FFD700;
+}
+
+body.high-contrast .field input {
+    background: #000;
+    color: #fff;
+    border: 1px solid #FFD700;
+}
+
+body.high-contrast .field input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.high-contrast .field input:focus {
+    background: #111;
+    border-color: #fff;
+}
+
+body.high-contrast .toggle-pw {
+    color: #FFD700;
+}
+
+body.high-contrast .toggle-pw:hover {
+    color: #fff;
+}
+
+body.high-contrast .remember {
+    color: #fff;
+}
+
+body.high-contrast .checkmark {
+    border: 2px Solid #FFD700;
+    background: #000;
+}
+
+body.high-contrast .remember input:checked + .checkmark {
+    background: #FFD700;
+}
+
+body.high-contrast .remember input:checked + .checkmark::after {
+    background: #000;
+}
+
+body.high-contrast .btn-signin {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .forgot-link {
+    color: #FFD700;
+}
+
+body.high-contrast .form-alert {
+    background: #111;
+    color: #ff6b52;
+    border: 1px solid #ff6b52;
+}
+
+body.high-contrast .field-error {
+    color: #ff6b52;
+}
+
+body.high-contrast .field input.invalid {
+    background: #1a0000;
+    border-color: #ff6b52;
+}
+
+body.high-contrast .field input.invalid:focus {
+    border-color: #ff6b52;
+    outline-color: #ff6b52;
+}

@@ -332,3 +332,236 @@ input.has-error {
     height: 25px;
     width:auto;
 }
+
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#contrastBtn {
+    background: #fff;
+    color: #691111;
+    border: 2px solid #691111;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contrastBtn:hover {
+    background: #f2b800;
+}
+
+body.high-contrast {
+    background-color: #000;
+    color: #ffffff;
+}
+
+body.high-contrast .checkout-topbar {
+    background: #000;
+    border-bottom: 1px solid #FFD700;
+}
+
+body.high-contrast .back-link {
+    color: #fff;
+}
+
+body.high-contrast .back-link:hover {
+    color: #FFD700;
+    opacity: 1;
+}
+
+body.high-contrast .pay-title {
+    color: #fff;
+}
+
+body.high-contrast .pay-card,
+body.high-contrast .summary-card {
+    background: #111;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .pay-card-heading,
+body.high-contrast label {
+    color: #fff;
+}
+
+body.high-contrast .method-btn {
+    background: #000;
+    color: #fff;
+    border: 1.5px solid #FFD700;
+}
+
+body.high-contrast .method-btn:hover {
+    border-color: #fff;
+}
+
+body.high-contrast .method-btn.is-active {
+    background: #FFD700;
+    color: #000;
+    border-color: #FFD700;
+}
+
+body.high-contrast input {
+    background: #000;
+    color: #fff;
+    border: 1.5px solid #FFD700;
+}
+
+body.high-contrast input:focus {
+    border-color: #fff;
+}
+
+body.high-contrast input.has-error {
+    border-color: #ff4d4d;
+}
+
+body.high-contrast .field-error {
+    color: #ff4d4d;
+}
+
+body.high-contrast .redirect-copy,
+body.high-contrast .summary-item-meta,
+body.high-contrast .empty-summary {
+    color: #ccc;
+}
+
+body.high-contrast .summary-item-name,
+body.high-contrast .summary-item-price,
+body.high-contrast .breakdown-row,
+body.high-contrast .total-row {
+    color: #fff;
+}
+
+body.high-contrast .total-row {
+    border-top: 1px dashed #FFD700;
+}
+
+body.high-contrast .receipt-edge {
+    background: 1px dashed #FFD700;
+}
+
+body.high-contrast .pay-submit-btn {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .pay-submit-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+body.high-contrast .pay-submit-btn:disabled {
+    opacity: 0.5;
+}
+
+body.high-contrast .success-overlay {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+body.high-contrast .success-card {
+    background: #111;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .success-card h2,
+body.high-contrast .order-ref {
+    color: #fff;
+}
+
+body.high-contrast .success-card p {
+    color: #ccc;
+}
+
+body.high-contrast .success-check {
+    background: #FFD700;
+    color: #000;
+}
+
+@media (max-width: 430px) {
+    .checkout-topbar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .checkout-logo {
+        height: 65px;
+    }
+
+    .accessibility-controls {
+        margin-left: 0;
+    }
+
+    #contrastBtn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .back-link {
+        font-size: 13px;
+    }
+
+    .pay-wrap {
+        padding: 20px 15px 50px;
+    }
+
+    .pay-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .pay-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .pay-card,
+    .summary-card {
+        padding:18px;
+    }
+
+    .method-row {
+        gap: 6px;
+    }
+
+    .method-btn {
+        font-size: 13px;
+        padding: 10px 5px;
+    }
+
+    .method-logo {
+        height: 18px;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 11px;
+    }
+
+    .summary-item-list li {
+        gap: 8px;
+    }
+
+    .summary-item-list img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .success-card {
+        padding: 30px 20px;
+    }
+
+    body.high-contrast .pay-card,
+    body.high-contrast .summary-card {
+        padding: 18px;
+    }    
+}

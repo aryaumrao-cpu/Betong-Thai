@@ -15,6 +15,7 @@ html, body {
     --turmeric: #E3A72F;
     --contact-line: rgba(242, 233, 216, 0.2);
     --contact-text-muted: rgba(242, 233, 216, 0.5);
+    --chili: #C23B22;
 }
 
 .utility-bar {
@@ -92,19 +93,6 @@ html, body {
 
 .cart-icon img {
     height: 96px;
-}
-.cart-panel {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 20px;
-    width: 250px;
-    background-color: #fff6e5;
-    border: 2px solid #6e0e0e;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 10;
 }
 
 .topnav {
@@ -220,7 +208,7 @@ filter: brightness(50%);
 }
 
 .booking-brand-logo {
-    height: 56px;
+    height: 120px;
     margin-bottom: 10px;
 }
 
@@ -752,4 +740,678 @@ filter: brightness(50%);
     background-color: #f2b800;
     color: #691111;
     border-radius: 6px;
+}
+
+.cart-icon {
+    margin-left: auto;
+    font-size: 20px;
+    color: #f2f2f2;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon img {
+    height: 96px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.cart-count {
+    background: var(--turmeric);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.cart-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 9998;
+}
+
+.cart-overlay.show {display: block;}
+
+.cart-panel {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 320px;
+    max-width: 85vw;
+    height: 100dvh;
+    margin: 0;
+    background-color: #fff6e5;
+    border-left: 3px solid #6e0e0e;
+    transition: right 0.3s ease;
+    padding: 20px;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.cart-panel.open {
+    right: 0;
+    display: flex;
+}
+
+.cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid #eee;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.cart-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #691111;
+}
+
+.cart-items {
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.cart-items li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.cart-items img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: none;
+}
+
+.cart-item-remove {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    top: 14px;
+    right: 0;
+}
+
+.cart-item-name {font-weight: 600; font-size: 14px;}
+.cart-item-price {color: #691111; font-weight: 700; font-size: 13px; margin-top: 2px;}
+
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.cart-item-qty-button {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.cart-actions {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.checkout-btn, .edit-btn {
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.checkout-btn {background: #691111;}
+.checkout-btn:hover {background: #8a1c1c;}
+
+.edit-btn {background: var(--chili);}
+.edit-btn:hover {background: #D65A45;}
+
+.cart-actions {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+#contrastBtn {
+    background: #fff;
+    color: #691111;
+    border: 2px solid #691111;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contrastBtn:hover {
+    background: #f2b800;
+}
+
+body.high-contrast {
+    background-color: #000;
+    color: #ffffff;
+}
+
+body.high-contrast .utility-bar,
+body.high-contrast .topnav,
+body.high-contrast .site-footer,
+body.high-contrast .footer-bottom {
+    background: #000;
+}
+
+body.high-contrast .utility-bar a,
+body.high-contrast .topnva a,
+body.high-contrast .footer-nav a,
+body.high-contrast .footer-copy,
+body.high-contrast .footer-line,
+body.high-contrast .footer-sub,
+body.high-contrast .footer-heading {
+    color: #fff;
+}
+
+body.high-contrast .topnav a.active {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .topnav a:hover,
+body.high-contrast .footer-nav a:hover {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .utility-bar .utility-btn {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .utility-bar .utility-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+body.high-contrast .hero-text h1,
+body.high-contrast .hero-text p {
+    color: #fff;
+}
+
+body.high-contrast .booking-hero {
+    background: #000;
+    border-bottom: 2px solid #FFD700;
+}
+
+body.high-contrast .booking-hero h1 {
+    color: #FFD700;
+}
+
+body.high-contrast .booking-hero p {
+    color: #fff;
+}
+
+body.high-contrast .booking-card {
+    background: #111;
+    border: 2px solid #FFD700;
+}
+
+body.high-contrast .booking-brand-name {
+    color: #fff;
+}
+
+body.high-contrast .stepper {
+    color: rgba(255, 255, 255, 0.555);
+}
+
+body.high-contrast .stepper-step:not(:last-child)::after {
+    background: rgba(255, 215, 0, 0.3);
+}
+
+body.high-contrast .stepper-dot {
+    background: rbga(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+body.high-contrast .stepper-step.active {
+    color: #fff;
+}
+
+body.high-contrast .stepper-step.active .stepper-dot {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .stepper-step.done .stepper-done {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .date-panel {
+    background: #111;
+    border: 1px solid #FFD700;
+}
+
+body.high-contrast .date-display {
+    background: #000;
+    color: #fff;
+    border-right: 1px solid #FFD700;
+}
+
+body.high-contrast .calendar-month {
+    color: #fff;
+}
+
+body.high-contrast .calendar-nav {
+    color: #FFD700;
+}
+
+body.high-contrast .calendar-nav:hover {
+    background: rgba(255, 215, 0, 0.15);
+}
+
+body.high-contrast .calendar-weekdays {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.high-contrast .calendar-day {
+    color: #fff;
+}
+
+body.high-contrast .calendar-day:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.15);
+}
+
+body.high-contrast .calendar-day:disabled {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+body.high-contrast .calendar-day.today {
+    box-shadow: inset 0 0 0 1.5px #FFD700;
+}
+
+body.high-contrast .calendar-day selected {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .guest-panel {
+    background: #111;
+    border: 1px solid #FFD700;
+}
+
+body.high-contrast .guest-panel h3 {
+    color: #fff;
+}
+
+body.high-contrast .guest-label,
+body.high-contrast .guest-note {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.high-contrast .guest-count-box {
+    background: #000;
+    border: 1px solid #FFD700;
+    color: #fff;
+}
+
+body.high-contrast .guest-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+body.high-contrast .guest-btn-add {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .details-form {
+    background: #111;
+    border: 1px solid #FFD700;
+}
+
+body.high-contrast .details-form label {
+    color: #fff;
+}
+
+body.high-contrast .optional {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.high-contrast .details-form input,
+body.high-contrast .details-form textarea {
+    background: #000;
+    border: 1px solid #FFD700;
+    color: #fff;
+}
+
+body.high-contrast .details-form input:focus,
+body.high-contrast .details-form textarea:focus {
+    border-color: #fff;
+}
+
+body.high-contrast .error-msg {
+    color: #ff6b52;
+}
+
+body.high-contrast .summary-box {
+    background: #111;
+    border: 1px solid #FFD700;
+    color: #fff;
+}
+
+body.high-contrast .summary-row {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+body.high-contrast .summary-label {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+body.high-contrast .confirm-box {
+    color: #fff;
+}
+
+body.high-contrast .confirm-check {
+    background: #FFD700;
+    color: #000;
+}
+
+body.high-contrast .confirm-note {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.high-contrast .booking-btn-primary {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .booking-btn-primary:hover:not(:disabled) {
+    background: #fff;
+    color: #000;
+}
+
+body.high-contrast .booking-btn-ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #FFD700;
+}
+
+body.high-contrast .booking-btn-ghost:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+body.high-contrast .cart-panel {
+    background: #000;
+    color: #fff;
+    border-left: 3px solid #FFD700;
+}
+
+body.high-contrast .cart-header {
+    background: #000;
+    color: #FFD700;
+    border-bottom: 2px solid #FFD700;
+}
+
+body.high-contrast .cart-items li {
+    border-bottom: 1px solid #FFD700;
+}
+
+body.high-contrast .cart-item-name {
+    color: #fff;
+}
+
+body.high-contrast .cart-item-price {
+    color: #FFD700;
+}
+
+body.high-contrast .cart-subtotal {
+    background: #111;
+    color: #fff;
+    border-top: 2px solid #FFD700;
+}
+
+body.high-contrast .cart-close {
+    color: #FFD700;
+    background: transparent;
+}
+
+body.high-contrast .cart-item-qty-button {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .checkout-btn,
+body.high-contrast .edit-btn {
+    background: #FFD700;
+    color: #000;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .checkout-btn:hover,
+body.high-contrast .edit-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+body.high-contrast .cart-overlay {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.high-contrast .cart-icon img {
+    filter: invert(1);
+    background-color: white;
+}
+
+body.high-contrast .utility-bar a:hover {
+    color: #fff;
+}
+
+@media (max-width: 430px) {
+    .utility-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .utility-left,
+    .utility-right {
+        gap: 8px;
+    }
+
+    .topnav {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 8px 10px;
+        justify-content: space-between;
+        gap: 4px;
+    }
+
+    .logo {
+        height: 60px;
+        flex-shrink: 0;
+    }
+
+    .topnav a {
+        font-size: 16px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    .cart-icon img {
+        height: 40px;
+        padding: 0;
+    }
+
+    .cart-count {
+        font-size: 11px;
+        padding: 1px 6px;
+    }
+
+    .calendar {
+    flex: 1;
+    padding: 18px 4px;
+    }
+
+    .calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+    }
+
+    .calendar-month {
+        color: #f2e9d8;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .calendar-nav {
+        background: none;
+        border: none;
+        color: #f2e9d8;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 2px 8px;
+        border-radius: 6px;
+    }
+
+    .calendar-nav:hover {
+        background: rgba(242,233,216, 0.1);
+    }
+
+    .calendar-weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        color: rgba(242,233, 216, 0.5);
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+    }
+
+    .calendar-day {
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        color: #f2e9d8;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .calendar-day:hover:not(:disabled) {
+        background: rgba(242, 233, 216, 0.12);
+    }
+
+    .calendar-day:disabled {
+        color: rgba(242, 233, 216, 0.25);
+        cursor: default;
+    }
+
+    .calendar-day.today {
+        box-shadow: inset 0 0 0 1.5px #f2b800;
+    }
+
+    .calendar-day.selected {
+        background: #691111;
+        color: #fff;
+    }
+
+    .calendar-day-blank {
+        aspect-ratio: 1;
+    }
+
+    * {
+        forced-color-adjust: none;
+    }
+
+    .calendar-weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .calendar-weekdays > * {
+        padding: 6px 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        font-size: 12px;
+    }
+
+    .calendar-weekdays > *:last-child {
+        padding-right: 4px;
+    }
 }

@@ -47,5 +47,85 @@ function setTotals(subtotal) {
     
 }
 
+function validateCheckoutForm() {
+    let isValid = true;
 
-document.addEventListener('DOMContentLoaded', renderCheckout);
+    const name = document.getElementById('custName');
+    const phone = document.getElementById('custPhone');
+    const address = document.getElementById('custAddress');
+
+    const nameError = document.getElementById('nameError');
+    const phoneError = document.getElementById('phoneError');
+    const addressError = document.getElementById('addressError');
+
+    [name, phone, address].forEach(f => f.classList.remove('invalid'));
+    [nameError, phoneError, addressError].forEach(e => e.textContent = '');
+
+    const nameValue = name.value.trim();
+    const namePattern = /^[A-Za-z\s'-]{2,60}$/;
+
+    if (!nameValue) {
+        nameError.textContent = 'Please enter you full name';
+        name.classList.add('invalid');
+        isValid = false;
+    } else if (!namePattern.test(nameValue)) {
+        nameError.textContent = 'Name should only contain letters.';
+        name.classList.add('invalid');
+        isValid = false;
+    } else if (!nameValue.includes(' ')) {
+        nameError.textContent = 'Please enter your first and last name.';
+        name.classList.add('invalid');
+        isValid = false;
+    }
+
+    const phoneValue = phone.value.trim();
+    const phoneDigits = phoneValue.replace(/\D/g, '');
+    const phonePattern = /^[\d\s()+-]+$/;
+
+    if (!phoneValue) {
+        phoneError.textContent = 'Please enter a phone number.';
+        phone.classList.add('invalid');
+        isValid = false;
+    } else if (!phonePattern.test(phoneValue)) {
+        phoneError.textContent = 'Phone number contains invalid characters.';
+        phone.classList.add('invalid');
+        isValid = false;
+    } else if (phoneDigits.length < 8 || phoneDigits.length > 12) {
+        phoneError.textContent = 'Please enter a valid phone number.';
+        phone.classList.add('invalid');
+        isValid = false;
+    }
+
+    const addressValue = address.value.trim();
+    const hasLetter = /[A-Za-z]/.test(addressValue);
+    const hasNumber = /\d/.test(addressValue);
+
+    if (!addressValue) {
+        addressError.textContent = 'Please enter a delivery address.';
+        address.classList.add('invalid');
+        isValid = false;
+    } else if (addressValue.length < 6) {
+        addressError.textContent = 'Please enter a complete address.';
+        address.classList.add('invalid');
+        isValid = false;
+    } else if (!hasNumber || !hasLetter) {
+        addressError.textContent = 'Please include a street number and name.';
+        address.classList.add('invalid');
+        isValid = false;
+    }
+
+    return isValid;
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderCheckout();
+
+    const payNowBtn = document.getElementById('payNowBtn');
+
+    payNowBtn.addEventListener('click', function(e) {
+        if (!validateCheckoutForm()) {
+            e.preventDefault();
+        }
+    });
+});

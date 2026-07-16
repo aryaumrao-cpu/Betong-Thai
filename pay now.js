@@ -68,6 +68,12 @@ cardCvvInput.addEventListener('input', () => {
     cardCvvInput.value = cardCvvInput.value.replace(/\D/g, '').slice(0, 4);
 });
 
+const cardZipInput = document.getElementById('cardZip');
+  
+  cardZipInput.addEventListener('input', () => {
+       cardZipInput.value = cardZipInput.value.replace(/\D/g, '').slice(0, 4);     
+});
+
 function luhnCheck(number) {
     let sum = 0;
     let alternate = false;
@@ -152,16 +158,18 @@ function validateForm() {
   }
 
   const zip = document.getElementById('cardZip').value.trim();
+  
   if (!zip) {
-    setError('cardZip', 'Enter your billing postcode.');
-    valid = false; firstInvalid = firstInvalid || 'cardZip';
-  } else if (!/^[a-zA-Z0-9\s-]{3,10}$/.test(zip)) {
-    setError('cardZip', "That postcode doesn't look right.");
-    valid = false; firstInvalid = firstInvalid || 'cardZip';
+    setError('cardZip', 'Enter your billing postcode');
+    valid = false;
+    firstInvalid = firstInvalid || 'cardZip';
+  } else if (!/^\d{4}$/.test(zip)) {
+        setError('cardZip', "Postcode must be exactly 4 digits.");
+        valid = false; 
+        firstInvalid = firstInvalid || 'cardZip';
   } else {
     setError('cardZip', '');
-  }
-
+  }  
   if (firstInvalid) document.getElementById(firstInvalid).focus();
   return valid;
 }

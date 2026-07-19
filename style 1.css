@@ -1143,3 +1143,11 @@ body.high-contrast .utility-bar a:hover {
         margin-left: 0;
     }
 }
+
+body.high-contrast .footer-nav a:hover {
+    background: #FFD700;
+    color: #000;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+}

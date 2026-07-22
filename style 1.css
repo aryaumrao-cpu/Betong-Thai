@@ -1148,3 +1148,8 @@ body.high-contrast .footer-nav a:hover {
     background: #FFD700;
     color: #000;
 }
+
+body.high-contrast .topnav a.active {
+    background: #FFD700;
+    color: #000;
+}

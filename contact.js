@@ -20,6 +20,17 @@ document.addEventListener("DOMContentLoaded", function() {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
+    function validateName(name) {
+        return /^[A-Za-z\s'-]+$/.test(name);
+    } 
+
+    function validateSubject(subject) {
+        return /^[A-Za-z0-9\s.,!?'"&()-]+$/.test(subject) && /[A-Za-z]/.test(subject);
+    }
+
+    function validateMessage(message) {
+        return /^[A-Za-z0-9\s.,!?'"&()\-:;\n]+$/.test(message) && /[A-Za-z]/.test(message)
+    }
     form.addEventListener("submit", function(e) {
         e.preventDefault();
 
@@ -28,6 +39,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if (fields.cname.value.trim() === "") {
             errors.cname.textContent = "Please enter your name.";
             valid = false;
+
+        } else if (!validateName(fields.cname.value.trim())) {
+        errors.cname.textContent = "Name can only contain letters, spaces, hyphens, and apostrophes.";
+        valid = false;
+
         } else {
             errors.cname.textContent = "";
         }
@@ -42,12 +58,18 @@ document.addEventListener("DOMContentLoaded", function() {
         if (fields.csubject.value.trim() === "") {
             errors.csubject.textContent = "Please enter a subject.";
             valid = false;
+        } else if (!validateSubject(fields.csubject.value.trim())) {
+            errors.csubject.textContent = "Subject must contain letters, numbers, spaces and basic punctuation.";
+            valid = false;
         } else {
             errors.csubject.textContent = "";
         }
 
         if (fields.cmessage.value.trim() === "") {
             errors.cmessage.textContent = "Please enter a message.";
+            valid = false;
+        } else if (!validateMessage(fields.cmessage.value.trim())) {
+            errors.cmessage.textContent = "Message contains invalid characters - please use plain text only.";
             valid = false;
         } else {
             errors.cmessage.textContent = "";

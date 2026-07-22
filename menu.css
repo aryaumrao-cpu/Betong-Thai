@@ -273,7 +273,7 @@ html, body {
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #e0a800;
 }
 
 .logo {
@@ -1218,4 +1218,8 @@ body.high-contrast .utility-bar a:hover {
         width: 60px;
         height: 60px;
     }
+}
+
+body.high-contrast .suggestion-meta {
+    color: #FFD700;
 }

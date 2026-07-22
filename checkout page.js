@@ -65,7 +65,7 @@ function validateCheckoutForm() {
     const namePattern = /^[A-Za-z\s'-]{2,60}$/;
 
     if (!nameValue) {
-        nameError.textContent = 'Please enter you full name';
+        nameError.textContent = 'Please enter your full name';
         name.classList.add('invalid');
         isValid = false;
     } else if (!namePattern.test(nameValue)) {

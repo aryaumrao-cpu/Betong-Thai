@@ -59,6 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "https://appleid.apple.com/sign-in";
     });
 
+    function validateName(name) {
+        return /^[A-Za-z\s'-]+$/.test(name);
+    }
+
     var form = document.querySelector(".signup-form");
     
     var nameInput = document.getElementById("name");
@@ -82,6 +86,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!nameInput.value.trim()) {
             nameError.textContent = "Full name is required."
+            valid = false;
+        } else if (!validateName(nameInput.value.trim())) {
+            nameError.textContent = "Name can only contain letters, spaces, hyphens, and apostrophes.";
             valid = false;
         }
        
@@ -109,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var confirmValue = confirmInput.value.trim();
 
         if (!confirmValue) {
-            confirmError.textContent = "Please Confirm your password.";
+            confirmError.textContent = "Please confirm your password.";
             valid = false;
         } else if (confirmValue !== pwValue) {
             confirmError.textContent = "Passwords do not match.";

@@ -36,7 +36,7 @@ function showSlides(n) {
 
 const REVIEWS = [
     {
-        text: "Betong Thai is hands down the best Thai food in Macquarie Fields. The green curry tastes exactly like homemade — rich, fragrant, and never overly sweet like most places. This is our go-to every Friday night.",
+        text: "Betong Thai is hands down the best Thai food in Macquarie Fields. The green curry tastes exactly homemade — rich, fragrant, and never overly sweet like most places. This is our go-to every Friday night.",
         name: "SARAH NGUYEN",
         title: "REGULAR CUSTOMER" 
     },
